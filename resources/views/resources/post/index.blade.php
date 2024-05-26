@@ -60,7 +60,7 @@
                                             <td>
                                             <a href="{{ route('post.show', $post) }}" class="btn btn-dark m-1" fdprocessedid="sh46d8"><i class="bi bi-folder-symlink"></i></a>
                                             <a href="{{ route('post.edit', $post) }}" type="button" class="btn btn-success m-1" fdprocessedid="sh46d8"><i class="bi bi-pencil-square"></i></a>
-                                            <form action="{{ route('post.destroy', $post->id) }}" method="post">
+                                            <form action="{{ route('post.destroy', $post->id) }}" method="post" onsubmit="return confirmDelete()">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger m-1" fdprocessedid="sh46d8"><i class="bi bi-trash-fill"></i></button>
@@ -76,5 +76,11 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this post?');
+        }
+    </script>
 
 </x-app-layout>
